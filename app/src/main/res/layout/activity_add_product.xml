@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_product"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.limox.jesus.manageproducts_application.AddProduct_Activity">
+
+    <ImageButton
+        android:layout_width="@dimen/imageButton_size"
+        android:layout_height="@dimen/imageButton_size"
+        app:srcCompat="@drawable/img1"
+        android:id="@+id/iBtnPicture"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/iBtnPicture_Description"/>
+
+    <TextView
+        android:text="@string/txvPicture_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iBtnPicture"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/txvPictureTitle"
+/>
+
+    <TextView
+        android:text="@string/txvName_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iBtnPicture"
+        android:layout_toEndOf="@+id/iBtnPicture"
+        android:id="@+id/txvName"
+        android:layout_marginLeft="@dimen/MarginImage"
+        android:layout_marginStart="@dimen/MarginImage"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iBtnPicture"
+        android:layout_toEndOf="@+id/iBtnPicture"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:layout_below="@+id/txvName"
+        android:id="@+id/edtName" />
+
+    <TextView
+        android:text="@string/txvBrand_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iBtnPicture"
+        android:layout_toEndOf="@+id/iBtnPicture"
+        android:layout_below="@+id/edtName"
+        android:id="@+id/txvBrand"
+        android:layout_marginLeft="@dimen/MarginImage"
+        android:layout_marginStart="@dimen/MarginImage"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:layout_below="@+id/txvBrand"
+        android:layout_toRightOf="@+id/iBtnPicture"
+        android:layout_toEndOf="@+id/iBtnPicture"
+        android:layout_marginLeft="@dimen/MarginImage"
+        android:layout_marginStart="@dimen/MarginImage"
+        android:id="@+id/edtBrand" />
+
+    <TextView
+        android:text="@string/txvDosage_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvPictureTitle"
+        android:layout_marginTop="@dimen/MarginImage"
+        android:id="@+id/txvDosage" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/MarginImage"
+        android:layout_marginStart="@dimen/MarginImage"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/edtDosage"
+        android:layout_below="@+id/txvDosage" />
+
+    <TextView
+        android:text="@string/txvPrice_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtDosage"
+        android:id="@+id/txvPrice" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvPrice"
+        android:layout_alignLeft="@+id/edtDosage"
+        android:layout_alignRight="@+id/edtDosage"
+        android:layout_alignEnd="@+id/edtDosage"
+        android:layout_alignStart="@+id/edtDosage"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/edtPrice" />
+
+    <TextView
+        android:text="@string/txvStock_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtPrice"
+        android:id="@+id/txvStock" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvStock"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtStock" />
+
+    <TextView
+        android:text="@string/txvDescription_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtStock"
+        android:id="@+id/txvDescription" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txvDescription"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtDescription" />
+</RelativeLayout>

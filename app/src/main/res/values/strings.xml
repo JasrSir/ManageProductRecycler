@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LoginTextInputLayout</string>
+    <string name="cbRemember_text">Remember me</string>
+    <string name="login">Login</string>
+    <string name="messagePassword">Introducce password</string>
+    <string name="messageUser">Introduce a user name</string>
+    <string name="txvPassword_text">Password:</string>
+    <string name="txvUser_text">User:</string>
+    <string name="txvDescription_text">Description</string>
+    <string name="txvStock_text">Stock</string>
+    <string name="txvPrice_text">Price</string>
+    <string name="txvDosage_text">Dosage</string>
+    <string name="txvBrand_text">Brand</string>
+    <string name="txvName_text">Name</string>
+    <string name="txvPicture_text">Choose picture</string>
+    <string name="iBtnPicture_Description">Pick a image for the product</string>
+</resources>
