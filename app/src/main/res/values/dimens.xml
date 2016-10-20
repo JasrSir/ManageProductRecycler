@@ -6,4 +6,6 @@
     <dimen name="Widget_textview_width">100dp</dimen>
     <dimen name="imageButton_size">100dp</dimen>
     <dimen name="MarginImage">10dp</dimen>
+    <dimen name="image_size">150dp</dimen>
+    <dimen name="marginTopTxv">10dp</dimen>
 </resources>
