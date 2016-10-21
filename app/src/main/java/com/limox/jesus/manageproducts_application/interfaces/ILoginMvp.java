@@ -1,4 +1,4 @@
-package com.limox.jesus.manageproducts_application;
+package com.limox.jesus.manageproducts_application.interfaces;
 
 /**
  * Created by jesus on 20/10/16.
@@ -19,4 +19,5 @@ public interface ILoginMvp {
         public void validateCredentials(String user, String password);
 
     }
+
 }

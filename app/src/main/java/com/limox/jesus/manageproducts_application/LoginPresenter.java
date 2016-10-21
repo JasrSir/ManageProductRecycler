@@ -2,11 +2,8 @@ package com.limox.jesus.manageproducts_application;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.limox.jesus.manageproducts_application.model.User;
-
-import java.util.concurrent.ExecutionException;
+import com.limox.jesus.manageproducts_application.interfaces.ILoginMvp;
 
 /**
  * Created by jesus on 20/10/16.
@@ -45,6 +42,7 @@ public class LoginPresenter implements ILoginMvp.Present {
         // Throw the error
         // If wasn't found any error it sends the code for the good login
         view.setMessageError(msgError, idError);
+
     }
 }
 

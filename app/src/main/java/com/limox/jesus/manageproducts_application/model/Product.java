@@ -1,7 +1,9 @@
 package com.limox.jesus.manageproducts_application.model;
 
+import java.util.Locale;
+
 /**
- * Created by jesus on 20/10/16.
+ * Entity of business for the products
  */
 
 public class Product {
@@ -80,6 +82,10 @@ public class Product {
     public void setmImage(int mImage) {
         this.mImage = mImage;
     }
+
+    public String getFormattedPrice(){return String.format("%s €",mPrice);}
+    // This pick the format locale for the numbers of the movile
+    public String getFormattedStock(){return String.format(Locale.getDefault(),"%d u.",mStock);}
 
     public Product( String name, String description, String dosage,String brand, double price, int stock, int image) {
         this.mName = name;

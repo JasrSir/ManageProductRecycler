@@ -150,6 +150,19 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/txvDescription"
         android:inputType="textPersonName"
+
         android:ems="10"
         android:id="@+id/edtDescription" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtDescription"
+        android:id="@+id/btnCancel"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/btnCancel"
+        android:layout_toRightOf="@id/btnCancel"
+        android:layout_below="@id/edtDescription"/>
 </RelativeLayout>

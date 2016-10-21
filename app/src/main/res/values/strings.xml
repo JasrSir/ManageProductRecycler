@@ -13,5 +13,5 @@
     <string name="txvBrand_text">Brand</string>
     <string name="txvName_text">Name</string>
     <string name="txvPicture_text">Choose picture</string>
-    <string name="iBtnPicture_Description">Pick a image for the product</string>
+    <string name="iBtnPicture_Description">Pick a mImage for the product</string>
 </resources>

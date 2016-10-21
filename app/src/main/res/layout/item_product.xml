@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/image_size"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/img1"
+        android:id="@+id/ivwImage_item" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvName_item"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivwImage_item"
+        android:layout_toEndOf="@+id/ivwImage_item"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="87dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvStock_item"
+        android:layout_alignBaseline="@+id/txvPrice_item"
+        android:layout_alignBottom="@+id/txvPrice_item"
+        android:layout_toRightOf="@+id/ivwImage_item"
+        android:layout_toEndOf="@+id/ivwImage_item"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvPrice_item"
+        android:layout_below="@+id/txvName_item"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/ivwImage_item"
+        android:layout_toEndOf="@+id/txvStock_item"
+   />
+
+
+</RelativeLayout>
