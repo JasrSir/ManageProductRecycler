@@ -1,12 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.3'
     defaultConfig {
-        applicationId "com.limox.jesus.manageproducts_application"
+        applicationId "com.limox.jesus.recicledview_application"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
+        jackOptions {
+            enabled = true;
+        }
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,6 +22,11 @@ android {
     }
     productFlavors {
     }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -29,4 +37,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
 }
