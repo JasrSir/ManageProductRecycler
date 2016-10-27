@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.limox.jesus.recicledview_application.Product_Activity" />
-        <activity android:name="com.limox.jesus.recicledview_application.AddProduct_Activity"></activity>
+        <activity android:name="com.limox.jesus.recicledview_application.ManageProduct_Activity"></activity>
     </application>
 
 </manifest>

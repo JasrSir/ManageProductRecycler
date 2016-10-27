@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.limox.jesus.recicledview_application.AddProduct_Activity">
+    tools:context="com.limox.jesus.recicledview_application.ManageProduct_Activity">
 
     <ImageButton
         android:layout_width="@dimen/imageButton_size"
@@ -46,10 +46,11 @@
         android:layout_toRightOf="@+id/iBtnPicture"
         android:layout_toEndOf="@+id/iBtnPicture"
         android:inputType="textPersonName"
-        android:text=""
         android:ems="10"
         android:layout_below="@+id/txvName"
-        android:id="@+id/edtName" />
+        android:id="@+id/edtName"
+        android:layout_marginLeft="@dimen/MarginImage"
+        android:layout_marginStart="@dimen/MarginImage"/>
 
     <TextView
         android:text="@string/txvBrand_text"
@@ -88,8 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignEnd="@+id/edtBrand"
+        android:layout_alignRight="@+id/edtBrand"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"
         android:inputType="textPersonName"
@@ -130,7 +131,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txvStock"
         android:inputType="textPersonName"
-        android:ems="10"
+        android:layout_alignLeft="@+id/edtDosage"
+        android:layout_alignRight="@+id/edtDosage"
+        android:layout_alignEnd="@+id/edtDosage"
+        android:layout_alignStart="@+id/edtDosage"
         android:id="@+id/edtStock" />
 
     <TextView
@@ -143,26 +147,25 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/txvDescription"
-        android:inputType="textPersonName"
-
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:minLines="3"
+        android:maxLines="10"
+        android:scrollbars="vertical"
         android:ems="10"
         android:id="@+id/edtDescription" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtDescription"
+        android:gravity="center">
+        <include layout="@layout/btnok_btncancel"/>
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edtDescription"
-        android:id="@+id/btnCancel"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/btnCancel"
-        android:layout_toRightOf="@id/btnCancel"
-        android:layout_below="@id/edtDescription"/>
 </RelativeLayout>

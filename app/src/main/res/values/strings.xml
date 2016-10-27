@@ -14,4 +14,8 @@
     <string name="txvName_text">Name</string>
     <string name="txvPicture_text">Choose picture</string>
     <string name="iBtnPicture_Description">Pick a mImage for the product</string>
+    <string name="action_add_product">Añadir</string>
+    <string name="action_sort_alphabetically">Ordenar alfabéticamente</string>
+    <string name="action_settings_general">Configuracion general</string>
+    <string name="action_settings_account">Configuracion de cuenta</string>
 </resources>
