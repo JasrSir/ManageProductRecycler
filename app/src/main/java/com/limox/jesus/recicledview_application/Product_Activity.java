@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.limox.jesus.recicledview_application.adapter.ProductAdapterRecycler;
+import com.limox.jesus.recicledview_application.settings.AccountSettings_Activity;
+import com.limox.jesus.recicledview_application.settings.GeneralSettings_Activity;
 
 public class Product_Activity extends AppCompatActivity {
 
@@ -52,9 +54,10 @@ public class Product_Activity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_add_product:
-                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
+                intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
                 // if (startActivityForResult(intent,ADD_PRODUCT))
                 break;
             case R.id.action_sort_alphabetically:
@@ -67,9 +70,14 @@ public class Product_Activity extends AppCompatActivity {
 
 
                 break;
+
             case R.id.action_settings_general:
+                intent = new Intent(Product_Activity.this, GeneralSettings_Activity.class);
+                startActivity(intent);
                 break;
             case R.id.action_settings_account:
+                intent = new Intent(Product_Activity.this, AccountSettings_Activity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

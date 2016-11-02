@@ -18,4 +18,5 @@
     <string name="action_sort_alphabetically">Ordenar alfabéticamente</string>
     <string name="action_settings_general">Configuracion general</string>
     <string name="action_settings_account">Configuracion de cuenta</string>
+    <string name="txvforgot_text"><a href="https://ellimonerox.tumblr.com">Forgot password?</a></string>
 </resources>

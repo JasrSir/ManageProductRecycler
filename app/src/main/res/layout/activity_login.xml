@@ -67,7 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cbRemember"
         android:layout_marginTop="@dimen/widget_margin_top"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
 
         <Button
             android:text="@string/login"
@@ -78,4 +79,14 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/selbtnlogin"/>
     </LinearLayout>
+
+    <TextView
+        android:text="@string/txvforgot_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:autoLink="web"
+        android:id="@+id/txvForgot" />
 </RelativeLayout>

@@ -1,15 +1,19 @@
 package com.limox.jesus.recicledview_application;
 
+import android.app.Application;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.limox.jesus.recicledview_application.interfaces.ILoginMvp;
 
@@ -21,6 +25,7 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
     private Button mBtnLogin;
     private TextInputLayout mTilUser;
     private TextInputLayout mTilPassword;
+    private TextView mtxvForgot;
     private final String TAG="logintextinputlayout";
 
     @Override
@@ -34,7 +39,11 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
         mTilUser = (TextInputLayout) findViewById(R.id.tilUser);
         mTilPassword = (TextInputLayout) findViewById(R.id.tilPassword);
+        mtxvForgot = (TextView) findViewById(R.id.txvForgot);
         //endregion
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"hipster.ttf");
+        mtxvForgot.setTypeface(typeface);
 
         //region Anonymous method
         mEdtUser.addTextChangedListener(new TextWatcher() {

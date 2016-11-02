@@ -18,6 +18,8 @@
         </activity>
         <activity android:name="com.limox.jesus.recicledview_application.Product_Activity" />
         <activity android:name="com.limox.jesus.recicledview_application.ManageProduct_Activity"></activity>
+        <activity android:name=".settings.AccountSettings_Activity"/>
+        <activity android:name=".settings.GeneralSettings_Activity"/>
     </application>
 
 </manifest>

@@ -34,8 +34,8 @@ public class ProductAdapterRecycler extends RecyclerView.Adapter<ProductAdapterR
     // Constructor que reciba el contexto
 
     private List<Product> products;
-    Context _context;
-    ProductApplication productApplication;
+    private Context _context;
+    private ProductApplication productApplication;
 
     public ProductAdapterRecycler(Context context) {
         this._context = context;
