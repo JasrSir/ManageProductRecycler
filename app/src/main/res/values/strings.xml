@@ -19,4 +19,15 @@
     <string name="action_settings_general">Configuracion general</string>
     <string name="action_settings_account">Configuracion de cuenta</string>
     <string name="txvforgot_text"><a href="https://ellimonerox.tumblr.com">Forgot password?</a></string>
+    <string name="crtUser_edtName">Name</string>
+    <string name="crtUser_edtEmail">Email</string>
+    <string name="crtUser_edtPassword">Password</string>
+    <string name="crtUser_txvProvincia">Provincial</string>
+    <string name="crtUser_txvLocalidad">Localidad</string>
+    <string name="crtUser_man">Man</string>
+    <string name="crtUser_woman">Woman</string>
+    <string name="crtUser_other">Other</string>
+    <string name="crtUser_title">Create user</string>
+    <string name="crtUser_rbtParticular">Particular</string>
+    <string name="crtUser_rbtBusiness">Business</string>
 </resources>

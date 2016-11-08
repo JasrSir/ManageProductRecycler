@@ -3,23 +3,24 @@
     package="com.limox.jesus.recicledview_application">
 
     <application
-        android:name="com.limox.jesus.recicledview_application.ProductApplication"
+        android:name=".ProductApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.limox.jesus.recicledview_application.LoginRelative_Activity">
+        <activity android:name=".LoginRelative_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.limox.jesus.recicledview_application.Product_Activity" />
-        <activity android:name="com.limox.jesus.recicledview_application.ManageProduct_Activity"></activity>
-        <activity android:name=".settings.AccountSettings_Activity"/>
-        <activity android:name=".settings.GeneralSettings_Activity"/>
+        <activity android:name=".Product_Activity" />
+        <activity android:name=".ManageProduct_Activity" />
+        <activity android:name=".settings.AccountSettings_Activity" />
+        <activity android:name=".settings.GeneralSettings_Activity" />
+        <activity android:name=".CreaterUser_Activity"></activity>
     </application>
 
 </manifest>

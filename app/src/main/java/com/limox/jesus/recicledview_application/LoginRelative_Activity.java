@@ -1,6 +1,5 @@
 package com.limox.jesus.recicledview_application;
 
-import android.app.Application;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
@@ -8,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +15,7 @@ import android.widget.TextView;
 
 import com.limox.jesus.recicledview_application.interfaces.ILoginMvp;
 
-public class LoginRelative_Activity extends AppCompatActivity implements  ILoginMvp.View{
+public class LoginRelative_Activity extends AppCompatActivity implements ILoginMvp.View {
 
     private ILoginMvp.Present loginMvp;
     private EditText mEdtPassword;
@@ -25,8 +23,9 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
     private Button mBtnLogin;
     private TextInputLayout mTilUser;
     private TextInputLayout mTilPassword;
-    private TextView mtxvForgot;
-    private final String TAG="logintextinputlayout";
+    private TextView mTxvForgot;
+    private TextView mTxvCreateu;
+    private final String TAG = "logintextinputlayout";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,12 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
         mTilUser = (TextInputLayout) findViewById(R.id.tilUser);
         mTilPassword = (TextInputLayout) findViewById(R.id.tilPassword);
-        mtxvForgot = (TextView) findViewById(R.id.txvForgot);
+        mTxvForgot = (TextView) findViewById(R.id.txvForgot);
+        mTxvCreateu = (TextView) findViewById(R.id.txvCreateu);
         //endregion
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"hipster.ttf");
-        mtxvForgot.setTypeface(typeface);
+       // Typeface typeface = Typeface.createFromAsset(getAssets(), "hipster.ttf");
+       // mTxvForgot.setTypeface(typeface);
 
         //region Anonymous method
         mEdtUser.addTextChangedListener(new TextWatcher() {
@@ -85,7 +85,14 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
                 loginMvp.validateCredentials(mEdtUser.getText().toString(), mEdtPassword.getText().toString());
             }
         });
-    //endregion
+
+        mTxvCreateu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginRelative_Activity.this, CreaterUser_Activity.class));
+            }
+        });
+        //endregion
 
         //Comprobar la persistencia del objeto Application
         /* I comment that because if I let it free I cant cast class at the other activity
@@ -97,14 +104,15 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
         }
         */
         // All who is iniciated at onCreate must be finalize  at onStop
-        Log.d(TAG,"Activity inicializada");
+        Log.d(TAG, "Activity inicializada");
 
     }
+
     @Override
     public void setMessageError(String messageError, int idView) {
         //Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show();
 
-        switch (idView){
+        switch (idView) {
             case R.id.edtUser:
                 // This show us the message of error below the widget like in html
                 mTilUser.setError(messageError);
@@ -114,7 +122,7 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
                 mTilPassword.setError(messageError);
                 break;
             case 0: // Login accepted
-                Intent intent = new Intent(this,Product_Activity.class);
+                Intent intent = new Intent(this, Product_Activity.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -126,15 +134,14 @@ public class LoginRelative_Activity extends AppCompatActivity implements  ILogin
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"Activity finalizada");
+        Log.d(TAG, "Activity finalizada");
     }
-
 
 
     /**
      * Turns the values of mEdtPassword and mEdtUser to ""
      */
-    private void resetValues(){
+    private void resetValues() {
         mEdtPassword.setText("");
         mEdtUser.setText("");
     }
