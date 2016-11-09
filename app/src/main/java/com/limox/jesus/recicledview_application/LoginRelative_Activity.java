@@ -1,7 +1,6 @@
 package com.limox.jesus.recicledview_application;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,7 +88,7 @@ public class LoginRelative_Activity extends AppCompatActivity implements ILoginM
         mTxvCreateu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginRelative_Activity.this, CreaterUser_Activity.class));
+                startActivity(new Intent(LoginRelative_Activity.this, SignUp_Activity.class));
             }
         });
         //endregion
