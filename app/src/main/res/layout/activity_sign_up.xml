@@ -29,8 +29,6 @@
                     android:id="@+id/crtUser_edtName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
-
                     android:hint="@string/crtUser_edtName"
                     android:inputType="textPersonName" />
             </android.support.design.widget.TextInputLayout>

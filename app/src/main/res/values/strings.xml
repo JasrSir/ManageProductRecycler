@@ -23,7 +23,7 @@
     <string name="crtUser_edtName">Name</string>
     <string name="crtUser_edtEmail">Email</string>
     <string name="crtUser_edtPassword">Password</string>
-    <string name="crtUser_txvProvincia">Provincial</string>
+    <string name="crtUser_txvProvincia">Provincia</string>
     <string name="crtUser_txvLocalidad">Localidad</string>
     <string name="crtUser_man">Man</string>
     <string name="crtUser_woman">Woman</string>

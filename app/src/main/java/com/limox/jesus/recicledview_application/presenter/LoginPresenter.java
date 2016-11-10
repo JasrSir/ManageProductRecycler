@@ -1,8 +1,9 @@
-package com.limox.jesus.recicledview_application;
+package com.limox.jesus.recicledview_application.presenter;
 
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.limox.jesus.recicledview_application.R;
 import com.limox.jesus.recicledview_application.interfaces.ILoginMvp;
 
 /**

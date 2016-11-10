@@ -4,12 +4,16 @@ import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import java.util.regex.Pattern;
 
 public class SignUp_Activity extends AppCompatActivity {
 
@@ -19,6 +23,9 @@ public class SignUp_Activity extends AppCompatActivity {
     private RadioGroup rgpTipo;
     private TextInputLayout tilNameCompany;
     private AdapterView.OnItemSelectedListener spinerListener;
+    private EditText edtUser;
+    private EditText edtEmail;
+    private EditText edtPassword;
 
 
     @Override
@@ -31,10 +38,14 @@ public class SignUp_Activity extends AppCompatActivity {
         spCity = (Spinner) findViewById(R.id.crtUser_spnProvincia);
         rgpTipo = (RadioGroup) findViewById(R.id.crtUser_rgpTipo);
 
+        edtUser = (EditText) findViewById(R.id.crtUser_edtName);
+        edtPassword = (EditText) findViewById(R.id.crtUser_edtPasswrd);
+        edtEmail = (EditText) findViewById(R.id.crtUser_edtEmail);
+
         tilNameCompany = (TextInputLayout) findViewById(R.id.crtUser_til_business);
 
         //Inicializamos provincias
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.provincias,R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.provincias, R.layout.support_simple_spinner_dropdown_item);
         // Introducimos el adapter
         spCity.setAdapter(adapter);
 
@@ -43,8 +54,10 @@ public class SignUp_Activity extends AppCompatActivity {
         rgpTipo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.crtUser_rdbtnParticular:
+
+
                         showCompany(false);
                         break;
                     case R.id.crtUser_rdbtnBusiness:
@@ -54,21 +67,26 @@ public class SignUp_Activity extends AppCompatActivity {
 
             }
         });
-
+        // Creamos el delegado de los spinners de OnItemSelectedListener
         loadSpinnerCounty();
+        // !!!!! ASOCIAMOS EL DELEGADO A LOS SPINNERS!!!!!
+        spCounty.setOnItemSelectedListener(spinerListener);
+        spCity.setOnItemSelectedListener(spinerListener);
     }
 
 
     /**
      * Create user
+     *
      * @param view
      */
-    public void signup(View view){
-
+    public void signup(View view) {
+        validate();
     }
 
     /**
      * show or hide the tilNameCompany
+     *
      * @param visibility
      */
     private void showCompany(boolean visibility) {
@@ -82,15 +100,26 @@ public class SignUp_Activity extends AppCompatActivity {
         spinerListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (view.getId()){
-                    case R.id.crtUser_spnProvincia:
-                        //Inicializamos localidades
-                        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,position,R.layout.support_simple_spinner_dropdown_item);
+                if (view != null) {
+                            // Cogemos el padre y lo casteamos a Spiner
+                    switch (((Spinner) parent).getId()) {
+                        case R.id.crtUser_spnProvincia:
+                            // Cogemos el array de provincias a localidades
+                            TypedArray resLocali = getResources().obtainTypedArray(R.array.array_provincia_a_localidades);
+                            // Cogemos el array de localidades del array cogido antes en la posicion de la ciudad seleccionada
+                            CharSequence[] csLocali = resLocali.getTextArray(position);
+                            // Creamos el adapter
+                            ArrayAdapter<CharSequence> tmpAdapter = new ArrayAdapter<CharSequence>(SignUp_Activity.this, android.R.layout.simple_spinner_dropdown_item, csLocali);
+                            // Inyectamos el adapter en las localidades
+                            spCounty.setAdapter(tmpAdapter);
+                            break;
 
-                        break;
-                    case R.id.crtUser_spnLocalidad:
-                        break;
+                        case R.id.crtUser_spnLocalidad:
+
+                            break;
+                    }
                 }
+
             }
 
             @Override
@@ -99,6 +128,18 @@ public class SignUp_Activity extends AppCompatActivity {
             }
         };
     }
+
+    private void validate() {
+        if (edtUser.getText().length() <= 0 ){
+            edtUser.setError("The text length is too short");
+        }
+
+
+        if (!Pattern.matches( Patterns.EMAIL_ADDRESS.toString(),edtPassword.getText().toString())) {
+            edtEmail.setError("Introduce a valid email address");
+        }
+    }
+
 
 
 }
