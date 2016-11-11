@@ -2,6 +2,7 @@ package com.limox.jesus.recicledview_application.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
 import com.limox.jesus.recicledview_application.interfaces.IPreferences;
@@ -17,27 +18,33 @@ import java.util.Set;
 public class AccountPreference implements IPreferences {
 
     private static IPreferences accountPreference;
-    public static final String FILE = "com.limox.jesus.recicledview_application_preferences";
+    //No es el package es el id de la aplicacin
+    // public static final String FILE = "com.limox.jesus.recicledview_application_preferences";
     public static final String USER = "user";
     public static final String PASSWORD = "password";
-    public static Context contexto;
+    public static final String EMAIL = "email";
+    private SharedPreferences sharedPreferences;
 
-    private AccountPreference(){
-
+    private AccountPreference(Context context){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
     //Singletón de la clase
     public static IPreferences getInstance(Context context){
         if (accountPreference == null){
-            accountPreference = new AccountPreference();
-            contexto = context;
+            accountPreference = new AccountPreference(context);
         }
         return accountPreference;
     }
-    public static void putUser(String user){
+    public void putUser(String user) {
         getEditor().putString(USER,user).apply();
     }
-    private static SharedPreferences.Editor getEditor(Context context){
-        SharedPreferences sharedPreferences
-        return SharedPreferences
+    public void putPassword(String password) {
+        getEditor().putString(PASSWORD,password).apply();
+    }
+    public void putEmail(String email) {
+        getEditor().putString(EMAIL,email).apply();
+    }
+    private  SharedPreferences.Editor getEditor(){
+        return sharedPreferences.edit();
     }
 }

@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.limox.jesus.recicledview_application.interfaces.ILoginMvp;
+import com.limox.jesus.recicledview_application.interfaces.IValidateUser;
 import com.limox.jesus.recicledview_application.presenter.LoginPresenter;
 
-public class LoginRelative_Activity extends AppCompatActivity implements ILoginMvp.View {
+public class LoginRelative_Activity extends AppCompatActivity implements IValidateUser.View {
 
-    private ILoginMvp.Present loginMvp;
+    private IValidateUser.Present loginMvp;
     private EditText mEdtPassword;
     private EditText mEdtUser;
     private Button mBtnLogin;

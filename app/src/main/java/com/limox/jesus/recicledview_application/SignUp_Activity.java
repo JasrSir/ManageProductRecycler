@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
@@ -46,11 +47,21 @@ public class SignUp_Activity extends AppCompatActivity {
 
         //Inicializamos provincias
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.provincias, R.layout.support_simple_spinner_dropdown_item);
+
         // Introducimos el adapter
         spCity.setAdapter(adapter);
 
 
         // Event of the radio button group
+        initRadioClient();
+        // Creamos el delegado de los spinners de OnItemSelectedListener
+        loadSpinnerCounty();
+        // !!!!! ASOCIAMOS EL DELEGADO A LOS SPINNERS!!!!!
+        spCounty.setOnItemSelectedListener(spinerListener);
+        spCity.setOnItemSelectedListener(spinerListener);
+    }
+
+    private void initRadioClient() {
         rgpTipo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -67,11 +78,6 @@ public class SignUp_Activity extends AppCompatActivity {
 
             }
         });
-        // Creamos el delegado de los spinners de OnItemSelectedListener
-        loadSpinnerCounty();
-        // !!!!! ASOCIAMOS EL DELEGADO A LOS SPINNERS!!!!!
-        spCounty.setOnItemSelectedListener(spinerListener);
-        spCity.setOnItemSelectedListener(spinerListener);
     }
 
 
@@ -101,7 +107,7 @@ public class SignUp_Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (view != null) {
-                            // Cogemos el padre y lo casteamos a Spiner
+                    // Cogemos el padre y lo casteamos a Spiner
                     switch (((Spinner) parent).getId()) {
                         case R.id.crtUser_spnProvincia:
                             // Cogemos el array de provincias a localidades
@@ -115,7 +121,7 @@ public class SignUp_Activity extends AppCompatActivity {
                             break;
 
                         case R.id.crtUser_spnLocalidad:
-
+                            showCitySelected();
                             break;
                     }
                 }
@@ -129,17 +135,25 @@ public class SignUp_Activity extends AppCompatActivity {
         };
     }
 
+    private void showCitySelected() {
+        String message = getString(R.string.message_county_city,
+                spCity.getSelectedItem().toString(),
+                spCounty.getSelectedItem().toString());
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
     private void validate() {
-        if (edtUser.getText().length() <= 0 ){
+        if (edtUser.getText().length() <= 0) {
             edtUser.setError("The text length is too short");
         }
+        if (edtPassword.getText().length() <= 0){
+            edtPassword.setError("The text length is too short");
+        }
 
-
-        if (!Pattern.matches( Patterns.EMAIL_ADDRESS.toString(),edtPassword.getText().toString())) {
+        if (!Pattern.matches(Patterns.EMAIL_ADDRESS.toString(), edtPassword.getText().toString())) {
             edtEmail.setError("Introduce a valid email address");
         }
     }
-
 
 
 }
