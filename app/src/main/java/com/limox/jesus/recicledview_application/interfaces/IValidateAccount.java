@@ -1,23 +1,22 @@
 package com.limox.jesus.recicledview_application.interfaces;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.limox.jesus.recicledview_application.R;
+import com.limox.jesus.recicledview_application.model.Error;
 
 /**
  * Created by jesus on 20/10/16.
  */
 
 public interface IValidateAccount {
-    int OK=0;
-    int PASSWORD_DIGIT=10;
-    int PASSWORD_CASE=11;
-    int PASSWORD_LENGTH=12;
-    int DATA_EMPTY = 13;
+
 
     interface View{
         public void setMessageError(String messageError, int idView);
+        void startActivity(Intent intent);
     }
 
     interface Presenter{
@@ -27,9 +26,9 @@ public interface IValidateAccount {
             String msgError = "";
             int idError = 0;
             if (TextUtils.isEmpty(user)) {
-                return DATA_EMPTY;
+                return Error.DATA_EMPTY;
             }
-            return OK;
+            return Error.OK;
         }
 
 
@@ -39,16 +38,16 @@ public interface IValidateAccount {
             int idError = R.id.edtPassword;
 
             if (TextUtils.isEmpty(password)) {
-                idError = DATA_EMPTY;
+                idError = Error.DATA_EMPTY;
             } else if (!password.matches("^.{0,}([0-9])+.{0,}$")) {
-                idError = PASSWORD_CASE;
+                idError = Error.PASSWORD_CASE;
             } else if (!password.matches("^.+[a-zA-Z]+.+$")) {
-                idError = PASSWORD_DIGIT;
+                idError = Error.PASSWORD_DIGIT;
             } else if (password.length() < 8) {
-                idError = PASSWORD_LENGTH;
+                idError = Error.PASSWORD_LENGTH;
             }
             else {
-                idError = OK;
+                idError = Error.OK;
             }
             // Throw the error
             // If wasn't found any error it sends the code for the good login

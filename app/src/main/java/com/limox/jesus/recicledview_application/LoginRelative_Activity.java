@@ -1,6 +1,7 @@
 package com.limox.jesus.recicledview_application;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,7 +19,7 @@ import com.limox.jesus.recicledview_application.presenter.LoginPresenter;
 
 public class LoginRelative_Activity extends AppCompatActivity implements IValidateUser.View {
 
-    private IValidateUser.Present loginMvp;
+    private LoginPresenter mLoginPresenter;
     private EditText mEdtPassword;
     private EditText mEdtUser;
     private Button mBtnLogin;
@@ -26,13 +28,15 @@ public class LoginRelative_Activity extends AppCompatActivity implements IValida
     private TextView mTxvForgot;
     private TextView mTxvCreateu;
     private final String TAG = "logintextinputlayout";
+    private ViewGroup layout; //Cogemos el padre, generalizando en el padre de los layout
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //region Initiations
-        loginMvp = new LoginPresenter(this);
+        mLoginPresenter = new LoginPresenter(this);
+        layout = (ViewGroup) findViewById(R.id.activity_login);
         mEdtUser = (EditText) findViewById(R.id.edtUser);
         mEdtPassword = (EditText) findViewById(R.id.edtPassword);
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
@@ -82,7 +86,7 @@ public class LoginRelative_Activity extends AppCompatActivity implements IValida
             @Override
             public void onClick(View v) {
                 // Validates the credentials picked from the name and the password
-                loginMvp.validateCredentials(mEdtUser.getText().toString(), mEdtPassword.getText().toString());
+                mLoginPresenter.validateCredentialLogin(mEdtUser.getText().toString(), mEdtPassword.getText().toString());
             }
         });
 
@@ -109,17 +113,20 @@ public class LoginRelative_Activity extends AppCompatActivity implements IValida
     }
 
     @Override
-    public void setMessageError(String messageError, int idView) {
+    public void setMessageError(String nameResource, int idView) {
         //Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show();
+    // Se tiene que recoger el recurso cuyo nombre se el que
+        // pasa en nameResource
 
+        String messageError = getResources().getString(getResources().getIdentifier(nameResource,"string",getPackageName()));
         switch (idView) {
-            case R.id.edtUser:
-                // This show us the message of error below the widget like in html
-                mTilUser.setError(messageError);
+            case R.id.tilUser:
+                // Lanzamos el error con el mensaje en un snackbar
+                Snackbar.make(layout,messageError,Snackbar.LENGTH_SHORT).show();
+
                 break;
-            case R.id.edtPassword:
-                // This show us the message of error below the widget like in html
-                mTilPassword.setError(messageError);
+            case R.id.tilPassword:
+                Snackbar.make(layout,messageError,Snackbar.LENGTH_SHORT).show();
                 break;
             case 0: // Login accepted
                 Intent intent = new Intent(this, Product_Activity.class);
