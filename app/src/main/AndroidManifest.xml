@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginRelative_Activity">
+        <activity android:name=".Login_Activity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity android:name=".ManageProduct_Activity" />
         <activity android:name=".settings.AccountSettings_Activity" />
         <activity android:name=".settings.GeneralSettings_Activity" />
-        <activity android:name=".SignUp_Activity"></activity>
+        <activity android:name=".SignUp_Activity" android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

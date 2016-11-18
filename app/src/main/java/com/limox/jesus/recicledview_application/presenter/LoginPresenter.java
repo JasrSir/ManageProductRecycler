@@ -3,6 +3,7 @@ package com.limox.jesus.recicledview_application.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Patterns;
 
 import com.limox.jesus.recicledview_application.Product_Activity;
 import com.limox.jesus.recicledview_application.R;
@@ -30,13 +31,15 @@ public class LoginPresenter implements Presenter {
         this.mContext = (Context)view;
     }
     public void  validateCredentialLogin(String user, String password){
-         validateUser = Presenter.validateCredentialsUser(user) ;
-         validatePassword = Presenter.validateCredentialsPassword(password);
+         validateUser = validateCredentialsUser(user) ;
+         validatePassword = validateCredentialsPassword(password);
 
         if (validateUser== Error.OK) {
             if (validatePassword== Error.OK) {
-                Intent intent = new Intent(mContext,Product_Activity.class);
-                view.startActivity(intent);
+                // Se puede utilizar la llamada al método starActivity con un Intent como
+                // parámetro y no tener que implementar el método startActivity en la vista
+                // porque llama al método super.startActivity() dentro de la Activity
+                view.startActivity();
             } else{
                 //                                  coge el mapa del contexto          coge el valor de la key
                 String nameResource= ErrorMapUtils.getErrorMapResource(mContext).get(String.valueOf(validatePassword));
@@ -50,5 +53,38 @@ public class LoginPresenter implements Presenter {
     }
 
 
+    @Override
+    public int validateCredentialsUser(String user) {
+        boolean validate = true;
+        String msgError = "";
+        int idError = 0;
+        if (TextUtils.isEmpty(user)) {
+            return Error.DATA_EMPTY;
+        }
+        return Error.OK;
+    }
+
+    @Override
+    public int validateCredentialsPassword(String password) {
+        boolean validate = false;
+        String msgError = "";
+        int idError = R.id.edtPassword;
+
+        if (TextUtils.isEmpty(password)) {
+            idError = Error.DATA_EMPTY;
+        } else if (!password.matches("^.{0,}([0-9])+.{0,}$")) {
+            idError = Error.PASSWORD_CASE;
+        } else if (!password.matches("^.+[a-zA-Z]+.+$")) {
+            idError = Error.PASSWORD_DIGIT;
+        } else if (password.length() < 8) {
+            idError = Error.PASSWORD_LENGTH;
+        }
+        else {
+            idError = Error.OK;
+        }
+        // Throw the error
+        // If wasn't found any error it sends the code for the good login
+        return idError;
+    }
 }
 

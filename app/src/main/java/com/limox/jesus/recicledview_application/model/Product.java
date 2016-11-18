@@ -1,5 +1,8 @@
 package com.limox.jesus.recicledview_application.model;
 
+import com.limox.jesus.recicledview_application.R;
+import com.limox.jesus.recicledview_application.interfaces.IProducto;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Locale;
@@ -9,7 +12,7 @@ import java.util.StringTokenizer;
  * Entity of business for the products
  */
 // Implement Serializable to be faster
-public class Product implements Serializable, Comparable<Product> {
+public class Product implements Serializable, Comparable<Product>, IProducto{
     private int mId;
     private String mName;
     private String mDescription;
@@ -18,8 +21,15 @@ public class Product implements Serializable, Comparable<Product> {
     private double mPrice;
     private int mStock;
     private int mImage;
-
     // Son Comparators para poder ordenar de diferentes formas
+
+    public static final Comparator<Product> NAME_COMARATOR = new Comparator<Product>() {
+        @Override
+        public int compare(Product o1, Product o2) {
+            return o1.getmName().compareTo(o2.getmName());
+        }
+    };
+
     public static final Comparator<Product> PRICE_COMPARATOR = new Comparator<Product>() {
         @Override
         public int compare(Product product, Product t1) {
@@ -117,6 +127,15 @@ public class Product implements Serializable, Comparable<Product> {
         this.mPrice = price;
         this.mStock = stock;
         this.mImage = image;
+    }
+    public Product(String name, String description, String dosage, String brand, double price, int stock) {
+        this.mName = name;
+        this.mDescription = description;
+        this.mDosage = dosage;
+        this.mBrand = brand;
+        this.mPrice = price;
+        this.mStock = stock;
+        this.mImage = R.drawable.img1;
     }
 
     @Override

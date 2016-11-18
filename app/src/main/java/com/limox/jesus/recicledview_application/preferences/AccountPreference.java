@@ -25,26 +25,31 @@ public class AccountPreference implements IPreferences {
     public static final String EMAIL = "email";
     private SharedPreferences sharedPreferences;
 
-    private AccountPreference(Context context){
+    private AccountPreference(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
+
     //Singletón de la clase
-    public static IPreferences getInstance(Context context){
-        if (accountPreference == null){
+    public static IPreferences getInstance(Context context) {
+        if (accountPreference == null) {
             accountPreference = new AccountPreference(context);
         }
         return accountPreference;
     }
+
     public void putUser(String user) {
-        getEditor().putString(USER,user).apply();
+        getEditor().putString(USER, user).apply();
     }
+
     public void putPassword(String password) {
-        getEditor().putString(PASSWORD,password).apply();
+        getEditor().putString(PASSWORD, password).apply();
     }
+
     public void putEmail(String email) {
-        getEditor().putString(EMAIL,email).apply();
+        getEditor().putString(EMAIL, email).apply();
     }
-    private  SharedPreferences.Editor getEditor(){
+
+    private SharedPreferences.Editor getEditor() {
         return sharedPreferences.edit();
     }
 }

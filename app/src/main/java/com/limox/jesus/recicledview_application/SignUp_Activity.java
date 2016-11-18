@@ -1,11 +1,16 @@
 package com.limox.jesus.recicledview_application;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,9 +19,13 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.limox.jesus.recicledview_application.interfaces.IValidateUser;
+import com.limox.jesus.recicledview_application.model.User;
+import com.limox.jesus.recicledview_application.presenter.SignupPresenter;
+
 import java.util.regex.Pattern;
 
-public class SignUp_Activity extends AppCompatActivity {
+public class SignUp_Activity extends AppCompatActivity implements IValidateUser.View {
 
     private Spinner spCounty;
     private Spinner spCity;
@@ -27,6 +36,8 @@ public class SignUp_Activity extends AppCompatActivity {
     private EditText edtUser;
     private EditText edtEmail;
     private EditText edtPassword;
+    private SignupPresenter presenter;
+    private ViewGroup layout;
 
 
     @Override
@@ -34,6 +45,7 @@ public class SignUp_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        layout = (ViewGroup) findViewById(R.id.su_rlContainer);
 
         spCounty = (Spinner) findViewById(R.id.crtUser_spnLocalidad);
         spCity = (Spinner) findViewById(R.id.crtUser_spnProvincia);
@@ -42,6 +54,17 @@ public class SignUp_Activity extends AppCompatActivity {
         edtUser = (EditText) findViewById(R.id.crtUser_edtName);
         edtPassword = (EditText) findViewById(R.id.crtUser_edtPasswrd);
         edtEmail = (EditText) findViewById(R.id.crtUser_edtEmail);
+
+        btnSignup = (Button) findViewById(R.id.crtUser_btnOkay);
+
+        presenter = new SignupPresenter(this);
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.validateCredentials(edtUser.getText().toString(),edtPassword.getText().toString(),edtEmail.getText().toString());
+            }
+        });
 
         tilNameCompany = (TextInputLayout) findViewById(R.id.crtUser_til_business);
 
@@ -82,12 +105,13 @@ public class SignUp_Activity extends AppCompatActivity {
 
 
     /**
-     * Create user
+     * Method who validate the content of the edit texts
      *
      * @param view
      */
-    public void signup(View view) {
-        validate();
+    public void onClick(View view) {
+        // Recoger los datos de la vista y llama al método del presentador
+        presenter.validateCredentials(edtUser.getText().toString(),edtPassword.getText().toString(),edtEmail.getText().toString());
     }
 
     /**
@@ -142,8 +166,41 @@ public class SignUp_Activity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    private void validate() {
-        if (edtUser.getText().length() <= 0) {
+
+    /**
+     * Method who show a message custom into his component for each error at the data introduced
+     * @param messageError Name of the String whose contais the message error to show
+     * use {@link Resources#getIdentifier(String, String, String)}  to get id at the class R
+     * @param idView
+     */
+    @Override
+    public void setMessageError(String messageError, int idView) {
+       String message = getResources().getString(getResources().getIdentifier(messageError,"string",getPackageName()));
+
+        //String message = getResources().getString(getResources().getIdentifier(messageError,"string",getPackageName()));
+        switch (idView) {
+            case R.id.crtUser_til_name:
+                // Lanzamos el error con el mensaje en un snackbar
+                Snackbar.make(layout,message,Snackbar.LENGTH_SHORT).show();
+
+                break;
+            case R.id.crtUser_til_passwrd:
+                Snackbar.make(layout,message,Snackbar.LENGTH_SHORT).show();
+                break;
+
+            case R.id.crtUser_til_email:
+                Snackbar.make(layout,message,Snackbar.LENGTH_SHORT).show();
+                break;
+            case 0: // Login accepted
+                Intent intent = new Intent(this, Product_Activity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+
+    }
+
+       /* if (edtUser.getText().length() <= 0) {
             edtUser.setError("The text length is too short");
         }
         if (edtPassword.getText().length() <= 0){
@@ -153,7 +210,11 @@ public class SignUp_Activity extends AppCompatActivity {
         if (!Pattern.matches(Patterns.EMAIL_ADDRESS.toString(), edtPassword.getText().toString())) {
             edtEmail.setError("Introduce a valid email address");
         }
+    }*/
+
+    public void startActivity(){
+        Intent intent = new Intent(SignUp_Activity.this,Product_Activity.class);
+        startActivity(intent);
+        finish();
     }
-
-
 }

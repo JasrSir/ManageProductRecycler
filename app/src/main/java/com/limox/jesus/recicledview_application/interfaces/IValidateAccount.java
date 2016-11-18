@@ -16,12 +16,15 @@ public interface IValidateAccount {
 
     interface View{
         public void setMessageError(String messageError, int idView);
-        void startActivity(Intent intent);
+        void startActivity();
     }
 
     interface Presenter{
+        public int validateCredentialsUser(String user);
+        public int validateCredentialsPassword(String password);
 
-        public static int validateCredentialsUser(String user) {
+
+      /*  public static int validateCredentialsUser(String user) {
             boolean validate = true;
             String msgError = "";
             int idError = 0;
@@ -52,7 +55,7 @@ public interface IValidateAccount {
             // Throw the error
             // If wasn't found any error it sends the code for the good login
             return idError;
-        }
+        }*/
 
     }
 

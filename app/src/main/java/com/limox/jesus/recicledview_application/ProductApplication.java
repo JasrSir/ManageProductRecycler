@@ -67,6 +67,8 @@ public class ProductApplication extends Application {
                 Collections.sort(mListaProductos);
                 break;
             case 1:
+                Collections.reverse(mListaProductos);
+          /*  case 1:
                 Collections.sort(mListaProductos, (p1, p2) -> (p1.getmName().compareTo(p2.getmName())));
                 break;
             case 2:
@@ -74,10 +76,12 @@ public class ProductApplication extends Application {
                 break;
             case 3:
                 Collections.sort(mListaProductos, (p1, p2) -> Double.compare(p1.getmStock(), p2.getmStock()));
-                break;
+                break;*/
         }
 
         return mListaProductos;
     }
-
+    public List<Product> getProducts() {
+        return mListaProductos;
+    }
 }

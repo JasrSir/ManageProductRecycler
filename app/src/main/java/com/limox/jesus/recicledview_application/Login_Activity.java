@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.limox.jesus.recicledview_application.interfaces.IValidateUser;
 import com.limox.jesus.recicledview_application.presenter.LoginPresenter;
 
-public class LoginRelative_Activity extends AppCompatActivity implements IValidateUser.View {
+public class Login_Activity extends AppCompatActivity implements IValidateUser.View {
 
     private LoginPresenter mLoginPresenter;
     private EditText mEdtPassword;
@@ -93,7 +93,7 @@ public class LoginRelative_Activity extends AppCompatActivity implements IValida
         mTxvCreateu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginRelative_Activity.this, SignUp_Activity.class));
+                startActivity(new Intent(Login_Activity.this, SignUp_Activity.class));
             }
         });
         //endregion
@@ -151,5 +151,10 @@ public class LoginRelative_Activity extends AppCompatActivity implements IValida
     private void resetValues() {
         mEdtPassword.setText("");
         mEdtUser.setText("");
+    }
+
+    public void startActivity(){
+        Intent intent = new Intent(Login_Activity.this,Product_Activity.class);
+        startActivity(intent);
     }
 }

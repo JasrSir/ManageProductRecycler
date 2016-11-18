@@ -11,11 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.limox.jesus.recicledview_application.ManageProduct_Activity">
 
-    <ImageButton
+    <ImageView
         android:layout_width="@dimen/imageButton_size"
         android:layout_height="@dimen/imageButton_size"
         app:srcCompat="@drawable/img1"
-        android:id="@+id/iBtnPicture"
+        android:id="@+id/mp_iBtnPicture"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/iBtnPicture_Description"/>
@@ -24,31 +24,31 @@
         android:text="@string/txvPicture_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iBtnPicture"
+        android:layout_below="@+id/mp_iBtnPicture"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:id="@+id/txvPictureTitle"
+        android:id="@+id/mp_txvPictureTitle"
 />
 
     <TextView
         android:text="@string/txvName_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/iBtnPicture"
-        android:layout_toEndOf="@+id/iBtnPicture"
-        android:id="@+id/txvName"
+        android:layout_toRightOf="@+id/mp_iBtnPicture"
+        android:layout_toEndOf="@+id/mp_iBtnPicture"
+        android:id="@+id/mp_txvName"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/iBtnPicture"
-        android:layout_toEndOf="@+id/iBtnPicture"
+        android:layout_toRightOf="@+id/mp_iBtnPicture"
+        android:layout_toEndOf="@+id/mp_iBtnPicture"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/txvName"
-        android:id="@+id/edtName"
+        android:layout_below="@+id/mp_txvName"
+        android:id="@+id/mp_edtName"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"/>
 
@@ -56,10 +56,10 @@
         android:text="@string/txvBrand_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/iBtnPicture"
-        android:layout_toEndOf="@+id/iBtnPicture"
-        android:layout_below="@+id/edtName"
-        android:id="@+id/txvBrand"
+        android:layout_toRightOf="@+id/mp_iBtnPicture"
+        android:layout_toEndOf="@+id/mp_iBtnPicture"
+        android:layout_below="@+id/mp_edtName"
+        android:id="@+id/mp_txvBrand"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"/>
 
@@ -69,80 +69,80 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:layout_below="@+id/txvBrand"
-        android:layout_toRightOf="@+id/iBtnPicture"
-        android:layout_toEndOf="@+id/iBtnPicture"
+        android:layout_below="@+id/mp_txvBrand"
+        android:layout_toRightOf="@+id/mp_iBtnPicture"
+        android:layout_toEndOf="@+id/mp_iBtnPicture"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"
-        android:id="@+id/edtBrand" />
+        android:id="@+id/mp_edtBrand" />
 
     <TextView
         android:text="@string/txvDosage_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txvPictureTitle"
+        android:layout_below="@+id/mp_txvPictureTitle"
         android:layout_marginTop="@dimen/MarginImage"
-        android:id="@+id/txvDosage" />
+        android:id="@+id/mp_txvDosage" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignEnd="@+id/edtBrand"
-        android:layout_alignRight="@+id/edtBrand"
+        android:layout_alignEnd="@+id/mp_edtBrand"
+        android:layout_alignRight="@+id/mp_edtBrand"
         android:layout_marginLeft="@dimen/MarginImage"
         android:layout_marginStart="@dimen/MarginImage"
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/edtDosage"
-        android:layout_below="@+id/txvDosage" />
+        android:id="@+id/mp_edtDosage"
+        android:layout_below="@+id/mp_txvDosage" />
 
     <TextView
         android:text="@string/txvPrice_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtDosage"
-        android:id="@+id/txvPrice" />
+        android:layout_below="@+id/mp_edtDosage"
+        android:id="@+id/mp_txvPrice" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txvPrice"
-        android:layout_alignLeft="@+id/edtDosage"
-        android:layout_alignRight="@+id/edtDosage"
-        android:layout_alignEnd="@+id/edtDosage"
-        android:layout_alignStart="@+id/edtDosage"
+        android:layout_below="@+id/mp_txvPrice"
+        android:layout_alignLeft="@+id/mp_edtDosage"
+        android:layout_alignRight="@+id/mp_edtDosage"
+        android:layout_alignEnd="@+id/mp_edtDosage"
+        android:layout_alignStart="@+id/mp_edtDosage"
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/edtPrice" />
+        android:id="@+id/mp_edtPrice" />
 
     <TextView
         android:text="@string/txvStock_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtPrice"
-        android:id="@+id/txvStock" />
+        android:layout_below="@id/mp_edtPrice"
+        android:id="@+id/mp_txvStock" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txvStock"
+        android:layout_below="@+id/mp_txvStock"
         android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/edtDosage"
-        android:layout_alignRight="@+id/edtDosage"
-        android:layout_alignEnd="@+id/edtDosage"
-        android:layout_alignStart="@+id/edtDosage"
-        android:id="@+id/edtStock" />
+        android:layout_alignLeft="@+id/mp_edtDosage"
+        android:layout_alignRight="@+id/mp_edtDosage"
+        android:layout_alignEnd="@+id/mp_edtDosage"
+        android:layout_alignStart="@+id/mp_edtDosage"
+        android:id="@+id/mp_edtStock" />
 
     <TextView
         android:text="@string/txvDescription_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtStock"
-        android:id="@+id/txvDescription" />
+        android:layout_below="@+id/mp_edtStock"
+        android:id="@+id/mp_txvDescription" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -152,18 +152,18 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/txvDescription"
+        android:layout_below="@+id/mp_txvDescription"
         android:inputType="textMultiLine"
         android:lines="4"
         android:minLines="3"
         android:maxLines="10"
         android:scrollbars="vertical"
         android:ems="10"
-        android:id="@+id/edtDescription" />
+        android:id="@+id/mp_edtDescription" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtDescription"
+        android:layout_below="@+id/mp_edtDescription"
         android:gravity="center">
         <include layout="@layout/btnok_btncancel"/>
     </LinearLayout>

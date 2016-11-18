@@ -7,18 +7,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import com.limox.jesus.recicledview_application.adapter.ProductAdapter;
 import com.limox.jesus.recicledview_application.adapter.ProductAdapterRecycler;
+import com.limox.jesus.recicledview_application.model.Product;
 import com.limox.jesus.recicledview_application.settings.AccountSettings_Activity;
 import com.limox.jesus.recicledview_application.settings.GeneralSettings_Activity;
 
 public class Product_Activity extends AppCompatActivity {
 
-    private ProductAdapterRecycler adapter;
-    private RecyclerView rcvProduct;
+    private ListView listProduct;
     private static final int ADD_PRODUCT = 0;
     private static final int EDIT_PRODUCT = 1;
     private boolean alfDown = false;
+    private ProductAdapter adapter;
+    public static String PRODUCT_KEY;
 
 
     @Override
@@ -26,12 +32,26 @@ public class Product_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        adapter = new ProductAdapterRecycler(this);
+        adapter = new ProductAdapter(this);
 
-        rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
-        rcvProduct.setLayoutManager(new LinearLayoutManager(this));
-        rcvProduct.setAdapter(adapter);
+        listProduct = (ListView) findViewById(R.id.ap_lvPorductos);
+        listProduct.setAdapter(adapter);
+
+        listProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(PRODUCT_KEY,(Product)parent.getItemAtPosition(position));
+                Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
+                intent.putExtras(bundle);
+                startActivityForResult(intent,EDIT_PRODUCT);
+
+                //TODO MIRAR EL PRODUCTO QUE SE LE ENVIA
+
+            }
+        });
     }
+
 
     /**
      * Method who inflate the menu into the Activity
@@ -61,14 +81,7 @@ public class Product_Activity extends AppCompatActivity {
                 // if (startActivityForResult(intent,ADD_PRODUCT))
                 break;
             case R.id.action_sort_alphabetically:
-                if (alfDown) {
-                    adapter.getAllProduct(ProductApplication.SORT_ALPH_DOWN);
-                } else
-                    adapter.getAllProduct(ProductApplication.SORT_ALPH_UP);
-
-                alfDown = !alfDown;
-
-
+                adapter.getAllProduct();
                 break;
 
             case R.id.action_settings_general:
@@ -92,11 +105,22 @@ public class Product_Activity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
         switch (requestCode) {
             case ADD_PRODUCT:
-                if (resultCode == RESULT_OK)
-                    // Add product
+                if (resultCode == RESULT_OK) {
+                    Product product = (Product)data.getExtras().getSerializable(PRODUCT_KEY);
+                    ((ProductAdapter)listProduct.getAdapter()).addProduct(product);
+                }
                     break;
+            case EDIT_PRODUCT:
+                if (resultCode == RESULT_OK){
+                 //   Product product = (Product)data.getExtras().getSerializable(PRODUCT_KEY);
+                 //   ((ProductAdapter)listProduct.getAdapter()).editProduct(product);
+                }
+                break;
+
         }
 
     }

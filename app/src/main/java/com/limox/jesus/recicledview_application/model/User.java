@@ -7,6 +7,7 @@ package com.limox.jesus.recicledview_application.model;
 public class User {
     private String user;
     private String password;
+    private String email;
 
     public void setUser(String user) {
         this.user = user;
@@ -16,9 +17,10 @@ public class User {
         this.password = password;
     }
 
-    public User(String user, String password) {
+    public User(String user, String password, String email) {
         this.user = user;
         this.password = password;
+        this.email = email;
     }
 
     public String getUser() {
@@ -32,5 +34,13 @@ public class User {
     @Override
     public String toString() {
         return  "user='" + user +", password='" + password ;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -4,4 +4,5 @@
     <string name="password_digit">Must contains at least one digit</string>
     <string name="password_case">Must contains a character at upper/lower case</string>
     <string name="password_length">Must contains at least 8 digits</string>
+    <string name="email_invalid">Email invalid </string>
 </resources>

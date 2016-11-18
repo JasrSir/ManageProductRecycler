@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-    tools:context="com.limox.jesus.recicledview_application.LoginRelative_Activity">
+    tools:context="com.limox.jesus.recicledview_application.Login_Activity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"

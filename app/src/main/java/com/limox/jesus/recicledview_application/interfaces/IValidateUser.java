@@ -10,13 +10,12 @@ import com.limox.jesus.recicledview_application.model.Error;
 
 public interface IValidateUser extends IValidateAccount {
 
-
-    interface Presenter {
-        static int validateCredentialsEmail(String email){
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                return Error.EMAIL_INVALID;
-            else
-                return Error.OK;
-        }
-    }
-}
+    interface PresenterUser{
+    int validateCredentialsEmail(String email);
+   /* static int validateCredentialsEmail(String email) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+            return Error.EMAIL_INVALID;
+        else
+            return Error.OK;
+    }*/
+}}

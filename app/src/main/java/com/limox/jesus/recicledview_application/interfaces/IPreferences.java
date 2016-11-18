@@ -9,6 +9,6 @@ import android.content.Context;
 public interface IPreferences {
 
     static int MODE= Context.MODE_PRIVATE;// Modo / permiso de los fichero
-
+    //static IPreferences getInstance (Context context){};
 
 }

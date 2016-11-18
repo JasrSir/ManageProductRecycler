@@ -34,5 +34,6 @@
     <string name="crtUser_cbPubli">Recibir publicicdad</string>
     <string name="crtUser_cbRemember">Remember user</string>
     <string name="message_county_city">Ha seleccionado %1$s (%2$s)</string>
+    <string name="action_create_product">Crear</string>
 
 </resources>
