@@ -2,6 +2,7 @@ package com.limox.jesus.recicledview_application;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,11 +22,10 @@ import com.limox.jesus.recicledview_application.settings.GeneralSettings_Activit
 public class Product_Activity extends AppCompatActivity {
 
     private ListView listProduct;
-    private static final int ADD_PRODUCT = 0;
-    private static final int EDIT_PRODUCT = 1;
     private boolean alfDown = false;
     private ProductAdapter adapter;
     private Product tmpProduct;
+    private FloatingActionButton fabAdd;
 
 
     @Override
@@ -46,12 +46,23 @@ public class Product_Activity extends AppCompatActivity {
                 bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
                 Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,EDIT_PRODUCT);
+                startActivityForResult(intent,IProducto.EDIT_PRODUCT);
 
                 //TODO MIRAR EL PRODUCTO QUE SE LE ENVIA
                 return true;
             }
+        });
 
+        fabAdd = (FloatingActionButton) findViewById(R.id.ap_fabAdd);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
+                bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
+                intent.putExtras(bundle);
+                startActivityForResult(intent,IProducto.ADD_PRODUCT);
+            }
         });
     }
 
@@ -111,13 +122,13 @@ public class Product_Activity extends AppCompatActivity {
 
 
         switch (requestCode) {
-            case ADD_PRODUCT:
+            case IProducto.ADD_PRODUCT:
                 if (resultCode == RESULT_OK) {
                     Product product = (Product)data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
                     ((ProductAdapter)listProduct.getAdapter()).addProduct(product);
                 }
                     break;
-            case EDIT_PRODUCT:
+            case IProducto.EDIT_PRODUCT:
                 if (resultCode == RESULT_OK){
                  Product product = (Product) data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
                     ((ProductAdapter)listProduct.getAdapter()).replaceProduct(tmpProduct,product);
