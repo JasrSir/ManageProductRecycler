@@ -6,6 +6,8 @@ package com.limox.jesus.recicledview_application.interfaces;
 
 public interface IProducto{
     String PRODUCT_KEY = "product";
+    String PRODUCT_KEY_CHANGED = "product_c";
     int ADD_PRODUCT = 0;
     int EDIT_PRODUCT = 1;
+
 }

@@ -92,6 +92,12 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
     }
 
+    public void replaceProduct(Product tmpProduct, Product product) {
+        remove(tmpProduct);
+        add(product);
+        notifyDataSetChanged();
+    }
+
     class ProductHolder{
         ImageView produc_image;
         TextView txvName;

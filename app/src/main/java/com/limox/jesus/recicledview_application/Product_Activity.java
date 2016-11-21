@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.limox.jesus.recicledview_application.adapter.ProductAdapter;
 import com.limox.jesus.recicledview_application.adapter.ProductAdapterRecycler;
+import com.limox.jesus.recicledview_application.interfaces.IProducto;
 import com.limox.jesus.recicledview_application.model.Product;
 import com.limox.jesus.recicledview_application.settings.AccountSettings_Activity;
 import com.limox.jesus.recicledview_application.settings.GeneralSettings_Activity;
@@ -24,7 +25,7 @@ public class Product_Activity extends AppCompatActivity {
     private static final int EDIT_PRODUCT = 1;
     private boolean alfDown = false;
     private ProductAdapter adapter;
-    public static String PRODUCT_KEY;
+    private Product tmpProduct;
 
 
     @Override
@@ -37,18 +38,20 @@ public class Product_Activity extends AppCompatActivity {
         listProduct = (ListView) findViewById(R.id.ap_lvPorductos);
         listProduct.setAdapter(adapter);
 
-        listProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(PRODUCT_KEY,(Product)parent.getItemAtPosition(position));
+                tmpProduct = (Product)parent.getItemAtPosition(position);
+                bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
                 Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,EDIT_PRODUCT);
 
                 //TODO MIRAR EL PRODUCTO QUE SE LE ENVIA
-
+                return true;
             }
+
         });
     }
 
@@ -110,18 +113,17 @@ public class Product_Activity extends AppCompatActivity {
         switch (requestCode) {
             case ADD_PRODUCT:
                 if (resultCode == RESULT_OK) {
-                    Product product = (Product)data.getExtras().getSerializable(PRODUCT_KEY);
+                    Product product = (Product)data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
                     ((ProductAdapter)listProduct.getAdapter()).addProduct(product);
                 }
                     break;
             case EDIT_PRODUCT:
                 if (resultCode == RESULT_OK){
-                 //   Product product = (Product)data.getExtras().getSerializable(PRODUCT_KEY);
-                 //   ((ProductAdapter)listProduct.getAdapter()).editProduct(product);
+                 Product product = (Product) data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
+                    ((ProductAdapter)listProduct.getAdapter()).replaceProduct(tmpProduct,product);
                 }
                 break;
 
         }
-
     }
 }

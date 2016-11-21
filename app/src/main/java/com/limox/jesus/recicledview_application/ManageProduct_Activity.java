@@ -43,16 +43,21 @@ public class ManageProduct_Activity extends AppCompatActivity {
 
         product = (Product) getIntent().getExtras().getSerializable(IProducto.PRODUCT_KEY);
 
+        if (product != null){
+            edtName.setText(product.getmName());
+            edtBrand.setText(product.getmBrand());
+            edtDescription.setText(product.getmDescription());
+            edtPrice.setText(Double.toString(product.getmPrice()));
+            edtStock.setText(Integer.toString(product.getmStock()));
+            edtDosage.setText(product.getmDosage());
+            btnOk.setText(getResources().getString(R.string.action_add_product));
+        }else
+            btnOk.setText(getResources().getString(R.string.action_create_product));
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (product != null){
-                    Bundle bundle = new Bundle();
-                    Intent intent = getIntent();
-                    bundle.putSerializable(IProducto.PRODUCT_KEY,product);
-                    setResult(IProducto.EDIT_PRODUCT,intent);
-                    finish();
-                }else{
+
                     String name = edtName.getText().toString();
                     String brand = edtBrand.getText().toString();
                     String description = edtDescription.getText().toString();
@@ -60,28 +65,20 @@ public class ManageProduct_Activity extends AppCompatActivity {
                     Double price = Double.parseDouble(edtPrice.getText().toString());
                     int stock =Integer.parseInt(edtStock.getText().toString());
 
-
                     product = new Product(name,description,dosage,brand,price,stock);
                     Bundle bundle = new Bundle();
                     Intent intent = getIntent();
                     bundle.putSerializable(IProducto.PRODUCT_KEY,product);
-                    setResult(IProducto.EDIT_PRODUCT,intent);
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK,intent);
                     finish();
-                }
+
+
             }
         });
 
 
-        if (product != null){
-            edtName.setText(product.getmName());
-            edtBrand.setText(product.getmBrand());
-            edtDescription.setText(product.getmDescription());
-            edtPrice.setText(Double.toString(product.getmPrice()));
-            edtStock.setText(product.getmStock());
-            edtDosage.setText(product.getmDosage());
-            btnOk.setText(getResources().getString(R.string.action_add_product));
-        }else
-            btnOk.setText(getResources().getString(R.string.action_create_product));
+
     }
 
 
