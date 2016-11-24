@@ -1,11 +1,12 @@
 package com.limox.jesus.recicledview_application;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.limox.jesus.recicledview_application.adapter.ProductAdapter;
-import com.limox.jesus.recicledview_application.adapter.ProductAdapterRecycler;
 import com.limox.jesus.recicledview_application.interfaces.IProducto;
 import com.limox.jesus.recicledview_application.model.Product;
 import com.limox.jesus.recicledview_application.settings.AccountSettings_Activity;
@@ -40,7 +40,31 @@ public class Product_Activity extends AppCompatActivity {
 
         listProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                /* Esto es de ahora*/ AlertDialog.Builder builder = new AlertDialog.Builder(Product_Activity.this);
+                builder.setTitle("¡Cuidado!");
+                builder.setMessage("¿Estas segur@ de que quieres borrar este producto?");
+
+                builder.setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //((ProductAdapter)listProduct.getAdapter()).remove((Product)listProduct.getItemAtPosition(position));
+                        adapter.remove(adapter.getItem(position));
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+                return true;
+            }
+        });
+        listProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 tmpProduct = (Product)parent.getItemAtPosition(position);
                 bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
@@ -49,7 +73,7 @@ public class Product_Activity extends AppCompatActivity {
                 startActivityForResult(intent,IProducto.EDIT_PRODUCT);
 
                 //TODO MIRAR EL PRODUCTO QUE SE LE ENVIA
-                return true;
+
             }
         });
 
@@ -66,16 +90,8 @@ public class Product_Activity extends AppCompatActivity {
         });
     }
 
-
-    /**
-     * Method who inflate the menu into the Activity
-     *
-     * @param menu
-     * @return
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // This inflate the menu
         getMenuInflater().inflate(R.menu.menu_product, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -90,12 +106,8 @@ public class Product_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_add_product:
-                intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
-                // if (startActivityForResult(intent,ADD_PRODUCT))
-                break;
             case R.id.action_sort_alphabetically:
-                adapter.getAllProduct();
+                adapter.sortAllProduct();
                 break;
 
             case R.id.action_settings_general:
@@ -107,7 +119,7 @@ public class Product_Activity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onContextItemSelected(item);
     }
 
     /**

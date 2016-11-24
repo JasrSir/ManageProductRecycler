@@ -22,30 +22,32 @@ public class ProductApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //region adding Products
-        saveProduct(new Product("Aguamarinatol", "te limpia la napia", "500", "Mar", ((double) 15), 130, R.drawable.img1));
-        saveProduct(new Product("Emetrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 10, R.drawable.img2));
-        saveProduct(new Product("Calsi", "te engancha", "800", "Dalsis", ((double) 6), 70, R.drawable.img3));
-        saveProduct(new Product("Brenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 7), 55, R.drawable.img4));
-        saveProduct(new Product("Furatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 70, R.drawable.img5));
-        saveProduct(new Product("Yarajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 80, R.drawable.img6));
-        saveProduct(new Product("Iboprufeno", "te lo cura to", "600", "IboMarc", ((double) 3.50), 70, R.drawable.img1));
-        saveProduct(new Product("Ometrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 20, R.drawable.img2));
-        saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 78.42), 70, R.drawable.img3));
-        saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 70, R.drawable.img4));
-        saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 270, R.drawable.img5));
-        saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 3, R.drawable.img6));
-        saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 6), 70, R.drawable.img3));
-        saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 80, R.drawable.img4));
-        saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 10, R.drawable.img5));
-        saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 70, R.drawable.img6));
-        saveProduct(new Product("Iboprufeno", "te lo cura to", "600", "IboMarc", ((double) 6), 60, R.drawable.img1));
-        saveProduct(new Product("Ometrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 70, R.drawable.img2));
-        saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 20), 70, R.drawable.img3));
-        saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 10, R.drawable.img4));
-        saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 40, R.drawable.img5));
-        saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 14, R.drawable.img6));
-        // endregion
+        if (mListaProductos.isEmpty()) {
+            //region adding Products
+            saveProduct(new Product("Aguamarinatol", "te limpia la napia", "500", "Mar", ((double) 15), 130, R.drawable.img1));
+            saveProduct(new Product("Emetrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 10, R.drawable.img2));
+            saveProduct(new Product("Calsi", "te engancha", "800", "Dalsis", ((double) 6), 70, R.drawable.img3));
+            saveProduct(new Product("Brenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 7), 55, R.drawable.img4));
+            saveProduct(new Product("Furatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 70, R.drawable.img5));
+            saveProduct(new Product("Yarajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 80, R.drawable.img6));
+            saveProduct(new Product("Iboprufeno", "te lo cura to", "600", "IboMarc", ((double) 3.50), 70, R.drawable.img1));
+            saveProduct(new Product("Ometrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 20, R.drawable.img2));
+            saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 78.42), 70, R.drawable.img3));
+            saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 70, R.drawable.img4));
+            saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 270, R.drawable.img5));
+            saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 3, R.drawable.img6));
+            saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 6), 70, R.drawable.img3));
+            saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 80, R.drawable.img4));
+            saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 10, R.drawable.img5));
+            saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 70, R.drawable.img6));
+            saveProduct(new Product("Iboprufeno", "te lo cura to", "600", "IboMarc", ((double) 6), 60, R.drawable.img1));
+            saveProduct(new Product("Ometrazol", "tambien te lo cura to", "600", "OmeMarc", ((double) 6), 70, R.drawable.img2));
+            saveProduct(new Product("Dalsi", "te engancha", "800", "Dalsis", ((double) 20), 70, R.drawable.img3));
+            saveProduct(new Product("Frenadol", "Me da alergia", "1000", "FrenaMarc", ((double) 6), 10, R.drawable.img4));
+            saveProduct(new Product("Curatol", "te lo cura todo, pero todo todo", "500", "CuraMarc", ((double) 6), 40, R.drawable.img5));
+            saveProduct(new Product("Carajillo", "Para dar energía por la mañana", "1000", "CaraMarc", ((double) 6), 14, R.drawable.img6));
+            // endregion
+        }
     }
 
     /**
@@ -81,6 +83,7 @@ public class ProductApplication extends Application {
 
         return mListaProductos;
     }
+
     public List<Product> getProducts() {
         return mListaProductos;
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.limox.jesus.recicledview_application.ProductApplication;
@@ -15,6 +16,7 @@ import com.limox.jesus.recicledview_application.model.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * No hace falta llamar a notifyDataSetChanged al usar:
@@ -33,7 +35,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
      * @param context
      */
     public ProductAdapter(Context context) {
-        super(context, R.layout.item_product,new ArrayList<Product>(((ProductApplication)context.getApplicationContext()).getProducts()));
+        super(context, R.layout.item_product,((ProductApplication)context.getApplicationContext()).getProducts());
         productApplication = ((ProductApplication)context.getApplicationContext());
     }
 
@@ -72,11 +74,20 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
 
     }
+    public List<Product> getAllProduct(){
+        return (((ProductApplication)getContext().getApplicationContext()).getProducts());
+    }
+
+    public void removeProduct(Product product){
+        ((ProductApplication)getContext().getApplicationContext()).getProducts().remove(product);
+        remove(product);
+        notifyDataSetChanged();
+    }
 
     /**
      *
      */
-    public void getAllProduct(/*int TYPE_SORT*/) {
+    public void sortAllProduct(/*int TYPE_SORT*/) {
         /*this.clear();
         this.addAll(productApplication.getProductsSorted(TYPE_SORT));
         notifyDataSetChanged(); // Notify all the views who implement this list
@@ -95,7 +106,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     public void replaceProduct(Product tmpProduct, Product product) {
         remove(tmpProduct);
         add(product);
-        notifyDataSetChanged();
     }
 
     class ProductHolder{
