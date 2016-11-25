@@ -41,7 +41,8 @@ public class Product_Activity extends AppCompatActivity {
         listProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                /* Esto es de ahora*/ AlertDialog.Builder builder = new AlertDialog.Builder(Product_Activity.this);
+                /* Esto es de ahora*/
+                AlertDialog.Builder builder = new AlertDialog.Builder(Product_Activity.this);
                 builder.setTitle("¡Cuidado!");
                 builder.setMessage("¿Estas segur@ de que quieres borrar este producto?");
 
@@ -66,11 +67,11 @@ public class Product_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                tmpProduct = (Product)parent.getItemAtPosition(position);
-                bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
-                Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
+                tmpProduct = (Product) parent.getItemAtPosition(position);
+                bundle.putParcelable(IProducto.PRODUCT_KEY, tmpProduct);
+                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,IProducto.EDIT_PRODUCT);
+                startActivityForResult(intent, IProducto.EDIT_PRODUCT);
 
                 //TODO MIRAR EL PRODUCTO QUE SE LE ENVIA
 
@@ -82,12 +83,43 @@ public class Product_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(Product_Activity.this,ManageProduct_Activity.class);
-                bundle.putSerializable(IProducto.PRODUCT_KEY,tmpProduct);
+                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
+                // Cogemos un objeto vacío
+                bundle.putParcelable(IProducto.PRODUCT_KEY, tmpProduct);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,IProducto.ADD_PRODUCT);
+                startActivityForResult(intent, IProducto.ADD_PRODUCT);
             }
         });
+    }
+    /**
+     * Take the result of startActivityForResult of the method onOptionsItemSelected
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
+        switch (requestCode) {
+            case IProducto.ADD_PRODUCT:
+                if (resultCode == RESULT_OK) {
+                    // Creamos un nuevo producto
+                    Product product = data.getParcelableExtra(IProducto.PRODUCT_KEY);
+                    ((ProductAdapter) listProduct.getAdapter()).addProduct(product);
+                }
+                break;
+            case IProducto.EDIT_PRODUCT:
+                if (resultCode == RESULT_OK) {
+                    // Editamos un producto
+                    Product product = data.getParcelableExtra(IProducto.PRODUCT_KEY);
+                    ((ProductAdapter) listProduct.getAdapter()).replaceProduct(tmpProduct, product);
+                }
+                break;
+        }
+        // Vaciamos el objeto para que si se le da a añadir nuevo no salga el último modificado
+        tmpProduct = null;
     }
 
     @Override
@@ -122,31 +154,5 @@ public class Product_Activity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    /**
-     * Take the result of startActivityForResult of the method onOptionsItemSelected
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-
-        switch (requestCode) {
-            case IProducto.ADD_PRODUCT:
-                if (resultCode == RESULT_OK) {
-                    Product product = (Product)data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
-                    ((ProductAdapter)listProduct.getAdapter()).addProduct(product);
-                }
-                    break;
-            case IProducto.EDIT_PRODUCT:
-                if (resultCode == RESULT_OK){
-                 Product product = (Product) data.getExtras().getSerializable(IProducto.PRODUCT_KEY);
-                    ((ProductAdapter)listProduct.getAdapter()).replaceProduct(tmpProduct,product);
-                }
-                break;
-
-        }
-    }
 }

@@ -41,7 +41,7 @@ public class ManageProduct_Activity extends AppCompatActivity {
 
         btnOk = (Button) findViewById(R.id.btnOk);
 
-        product = (Product) getIntent().getExtras().getSerializable(IProducto.PRODUCT_KEY);
+        product = getIntent().getParcelableExtra(IProducto.PRODUCT_KEY);
 
         if (product != null){
             edtName.setText(product.getmName());
@@ -68,7 +68,7 @@ public class ManageProduct_Activity extends AppCompatActivity {
                     product = new Product(name,description,dosage,brand,price,stock);
                     Bundle bundle = new Bundle();
                     Intent intent = getIntent();
-                    bundle.putSerializable(IProducto.PRODUCT_KEY,product);
+                    bundle.putParcelable(IProducto.PRODUCT_KEY,product);
                     intent.putExtras(bundle);
                     setResult(RESULT_OK,intent);
                     finish();
