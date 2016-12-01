@@ -129,7 +129,7 @@ public class Login_Activity extends AppCompatActivity implements IValidateUser.V
                 Snackbar.make(layout,messageError,Snackbar.LENGTH_SHORT).show();
                 break;
             case 0: // Login accepted
-                Intent intent = new Intent(this, Product_Activity.class);
+                Intent intent = new Intent(this, ListProduct_Fragment.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -154,7 +154,7 @@ public class Login_Activity extends AppCompatActivity implements IValidateUser.V
     }
 
     public void startActivity(){
-        Intent intent = new Intent(Login_Activity.this,Product_Activity.class);
+        Intent intent = new Intent(Login_Activity.this,ListProduct_Fragment.class);
         startActivity(intent);
     }
 }

@@ -1,6 +1,5 @@
 package com.limox.jesus.recicledview_application;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -8,7 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,10 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.limox.jesus.recicledview_application.interfaces.IValidateUser;
-import com.limox.jesus.recicledview_application.model.User;
 import com.limox.jesus.recicledview_application.presenter.SignupPresenter;
-
-import java.util.regex.Pattern;
 
 public class SignUp_Activity extends AppCompatActivity implements IValidateUser.View {
 
@@ -192,7 +187,7 @@ public class SignUp_Activity extends AppCompatActivity implements IValidateUser.
                 Snackbar.make(layout,message,Snackbar.LENGTH_SHORT).show();
                 break;
             case 0: // Login accepted
-                Intent intent = new Intent(this, Product_Activity.class);
+                Intent intent = new Intent(this, ListProduct_Fragment.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -213,7 +208,7 @@ public class SignUp_Activity extends AppCompatActivity implements IValidateUser.
     }*/
 
     public void startActivity(){
-        Intent intent = new Intent(SignUp_Activity.this,Product_Activity.class);
+        Intent intent = new Intent(SignUp_Activity.this,ListProduct_Fragment.class);
         startActivity(intent);
         finish();
     }

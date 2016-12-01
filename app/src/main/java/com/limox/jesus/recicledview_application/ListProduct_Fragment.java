@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.view.ContextMenu;
+import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +18,7 @@ import com.limox.jesus.recicledview_application.model.Product;
 import com.limox.jesus.recicledview_application.settings.AccountSettings_Activity;
 import com.limox.jesus.recicledview_application.settings.GeneralSettings_Activity;
 
-public class Product_Activity extends AppCompatActivity {
+public class ListProduct_Fragment extends Fragment {
 
     private ListView listProduct;
     private boolean alfDown = false;
@@ -28,10 +27,12 @@ public class Product_Activity extends AppCompatActivity {
     private FloatingActionButton fabAdd;
 
 
-    @Override
+
+
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.fragment_list_product);
 
         adapter = new ProductAdapter(this);
 
@@ -41,8 +42,8 @@ public class Product_Activity extends AppCompatActivity {
         listProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                /* Esto es de ahora*/
-                AlertDialog.Builder builder = new AlertDialog.Builder(Product_Activity.this);
+                *//* Esto es de ahora*//*
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListProduct_Fragment.this);
                 builder.setTitle("¡Cuidado!");
                 builder.setMessage("¿Estas segur@ de que quieres borrar este producto?");
 
@@ -69,7 +70,7 @@ public class Product_Activity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 tmpProduct = (Product) parent.getItemAtPosition(position);
                 bundle.putParcelable(IProducto.PRODUCT_KEY, tmpProduct);
-                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
+                Intent intent = new Intent(ListProduct_Fragment.this, ManageProduct_Fragment.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, IProducto.EDIT_PRODUCT);
 
@@ -83,7 +84,7 @@ public class Product_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
+                Intent intent = new Intent(ListProduct_Fragment.this, ManageProduct_Fragment.class);
                 // Cogemos un objeto vacío
                 bundle.putParcelable(IProducto.PRODUCT_KEY, tmpProduct);
                 intent.putExtras(bundle);
@@ -91,13 +92,13 @@ public class Product_Activity extends AppCompatActivity {
             }
         });
     }
-    /**
+    *//**
      * Take the result of startActivityForResult of the method onOptionsItemSelected
      *
      * @param requestCode
      * @param resultCode
      * @param data
-     */
+     *//*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -128,12 +129,12 @@ public class Product_Activity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /**
+    *//**
      * For the event of the menu
      *
      * @param item
      * @return if whe use the event, if is false it go to the super
-     */
+     *//*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
@@ -143,16 +144,16 @@ public class Product_Activity extends AppCompatActivity {
                 break;
 
             case R.id.action_settings_general:
-                intent = new Intent(Product_Activity.this, GeneralSettings_Activity.class);
+                intent = new Intent(ListProduct_Fragment.this, GeneralSettings_Activity.class);
                 startActivity(intent);
                 break;
             case R.id.action_settings_account:
-                intent = new Intent(Product_Activity.this, AccountSettings_Activity.class);
+                intent = new Intent(ListProduct_Fragment.this, AccountSettings_Activity.class);
                 startActivity(intent);
                 break;
         }
         return super.onContextItemSelected(item);
     }
-
+*/
 
 }

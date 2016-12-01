@@ -18,15 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Product_Activity" />
+        <activity android:name=".ListProduct_Fragment" />
         <activity
-            android:name=".ManageProduct_Activity"
+            android:name=".ManageProduct_Fragment"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".settings.AccountSettings_Activity" />
         <activity android:name=".settings.GeneralSettings_Activity" />
         <activity
             android:name=".SignUp_Activity"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Home_Activity"></activity>
     </application>
 
 </manifest>

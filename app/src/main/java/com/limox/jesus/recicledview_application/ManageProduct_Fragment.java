@@ -1,19 +1,17 @@
 package com.limox.jesus.recicledview_application;
 
 import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.limox.jesus.recicledview_application.interfaces.IProducto;
 import com.limox.jesus.recicledview_application.model.Product;
 
-public class ManageProduct_Activity extends AppCompatActivity {
+public class ManageProduct_Fragment extends Fragment {
 
     EditText edtName;
     EditText edtBrand;
@@ -29,7 +27,7 @@ public class ManageProduct_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_product);
+        setContentView(R.layout.fragment_manage_product);
         edtName = (EditText) findViewById(R.id.mp_edtName);
         edtBrand = (EditText) findViewById(R.id.mp_edtBrand);
         edtDescription = (EditText) findViewById(R.id.mp_edtDescription);

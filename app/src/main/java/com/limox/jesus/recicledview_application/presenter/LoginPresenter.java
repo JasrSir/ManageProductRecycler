@@ -1,15 +1,11 @@
 package com.limox.jesus.recicledview_application.presenter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Patterns;
 
-import com.limox.jesus.recicledview_application.Product_Activity;
 import com.limox.jesus.recicledview_application.R;
 import com.limox.jesus.recicledview_application.interfaces.IValidateAccount;
 import com.limox.jesus.recicledview_application.interfaces.IValidateAccount.Presenter;
-import com.limox.jesus.recicledview_application.interfaces.IValidateUser;
 import com.limox.jesus.recicledview_application.model.Error;
 import com.limox.jesus.recicledview_application.utils.ErrorMapUtils;
 
